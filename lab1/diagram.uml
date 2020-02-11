@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement />
+  <nodes>
+    <node x="0.0" y="566.0">com</node>
+    <node x="378.0" y="418.0">images</node>
+    <node x="0.0" y="418.0">netscape</node>
+    <node x="154.0" y="566.0">org</node>
+    <node x="0.0" y="640.0">Teeth</node>
+    <node x="287.0" y="270.0">toolbarButtonGraphics</node>
+    <node x="308.0" y="566.0">sun</node>
+    <node x="462.0" y="566.0">jdk</node>
+    <node x="189.0" y="418.0">META-INF</node>
+    <node x="175.0" y="492.0">apple</node>
+    <node x="252.0" y="344.0">groovyjarjarasm</node>
+    <node x="511.0" y="492.0">java</node>
+    <node x="0.0" y="492.0">groovy</node>
+    <node x="343.0" y="492.0">javax</node>
+    <node x="128.0" y="640.0">Claws</node>
+    <node x="0.0" y="270.0">groovyjarjarcommonscli</node>
+    <node x="0.0" y="0.0">Predator</node>
+    <node x="0.0" y="344.0">groovyjarjarantlr</node>
+    <node x="244.0" y="0.0">Main</node>
+  </nodes>
+  <notes />
+  <edges />
+  <settings layout="Hierarchic Group" zoom="0.8853615520282186" x="247.0" y="263.5" />
+  <SelectedNodes>
+    <node>Main</node>
+  </SelectedNodes>
+  <Categories>
+    <Category>Fields</Category>
+    <Category>Constructors</Category>
+    <Category>Methods</Category>
+    <Category>Properties</Category>
+    <Category>Inner Classes</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+
