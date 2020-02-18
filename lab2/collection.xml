@@ -1,0 +1,58 @@
+<collection>
+    <aria>
+        <name>Cantate ed arie a voce Solo</name>
+        <musician>
+            <name>Гранди</name>
+        </musician>
+        <style>SOUL</style>
+        <duration>100</duration>
+    </aria>
+    <opera>
+        <name>The Magic Flute</name>
+        <musician>
+            <name>Mozart</name>
+        </musician>
+        <style>JAZZ</style>
+        <duration>30</duration>
+    </opera>
+    <song>
+        <name>Old Town Road</name>
+        <musician>
+            <name>Lil Nas X</name>
+        </musician>
+        <style>HIP_HOP</style>
+        <duration>420</duration>
+    </song>
+    <symphony>
+        <name>№9</name>
+        <musician>
+            <name>Schubert</name>
+        </musician>
+        <style>LATIN</style>
+        <duration>100</duration>
+    </symphony>
+    <song>
+        <name>Fly Me to the Moon</name>
+        <musician>
+            <name>Frank Sinatra</name>
+        </musician>
+        <style>JAZZ</style>
+        <duration>120</duration>
+    </song>
+    <aria>
+        <name>La traviata</name>
+        <musician>
+            <name>Giuseppe Verdi</name>
+        </musician>
+        <style>SOUL</style>
+        <duration>100</duration>
+    </aria>
+    <opera>
+        <name>S.F.Sorrow</name>
+        <musician>
+            <name>The Pretty Things</name>
+        </musician>
+        <style>ROCK</style>
+        <duration>330</duration>
+    </opera>
+</collection>

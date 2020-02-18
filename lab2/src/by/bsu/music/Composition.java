@@ -1,13 +1,24 @@
 package by.bsu.music;
 
 public abstract class Composition {
+    private String name;
     private int duration;
     private Musician musician;
     private Style style;
 
-    public Composition(int duration, Musician musician) {
+    public Composition(String name, int duration, Musician musician, Style style) {
+        this.name = name;
         this.duration = duration;
         this.musician = musician;
+        this.style = style;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public int getDuration() {
