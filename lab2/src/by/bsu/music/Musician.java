@@ -1,4 +1,7 @@
 package by.bsu.music;
 
-public class Musician {
+import by.bsu.essenses.Human;
+
+public class Musician extends Human {
+
 }
