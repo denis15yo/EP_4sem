@@ -6,6 +6,10 @@ public class Disk {
     private String name;
     private Content content;
 
+    public Disk() {
+        name = "unknown-disk";
+    }
+
     public Disk(String name) {
         this.name = name;
     }

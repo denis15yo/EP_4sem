@@ -7,7 +7,11 @@ import java.util.Comparator;
 import java.util.Optional;
 
 public class Collection<T extends Composition> extends ArrayList<T> implements Content {
-    private String name;
+    private String name = "unknown-collection";
+
+    public void setName(String name) {
+        this.name = name;
+    }
 
     public int duration(){
         return stream().mapToInt(Composition::getDuration).sum();
