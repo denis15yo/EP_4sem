@@ -3,15 +3,20 @@ package by.bsu.essenses;
 import java.util.Objects;
 
 public class Human {
-    private int id;
     private String name;
 
     public Human() {
-        id = 0;
         name = "";
     }
-    public Human(int id, String name) {
-        this.id = id;
+    public Human(String name) {
+        this.name = name;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
         this.name = name;
     }
 
@@ -20,20 +25,16 @@ public class Human {
         if (this == o) return true;
         if (!(o instanceof Human)) return false;
         Human human = (Human) o;
-        return id == human.id &&
-                Objects.equals(name, human.name);
+        return Objects.equals(name, human.name);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name);
+        return Objects.hash(name);
     }
 
     @Override
     public String toString() {
-        return "Human{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                '}';
+        return name;
     }
 }

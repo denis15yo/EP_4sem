@@ -25,4 +25,8 @@ public class Collection<T extends Composition> extends ArrayList<T> implements C
     public void play() {
         System.out.println("Играет музыкальная коллекция " + name);
     }
+
+    public void print() {
+        forEach(System.out::println);
+    }
 }

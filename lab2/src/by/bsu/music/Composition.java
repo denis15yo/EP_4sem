@@ -6,6 +6,9 @@ public abstract class Composition {
     private Musician musician;
     private Style style;
 
+    public Composition() {
+    }
+
     public Composition(String name, int duration, Musician musician, Style style) {
         this.name = name;
         this.duration = duration;
@@ -43,5 +46,15 @@ public abstract class Composition {
 
     public void setStyle(Style style) {
         this.style = style;
+    }
+
+    @Override
+    public String toString() {
+        return String.format("%-8s%-42s%-25s%-33s%-30s" ,
+                getClass().getSimpleName(),
+                " : (название: " + name,
+                ", продолжительность: " + duration,
+                ", исполнитель: " + musician,
+                ", стиль: " + style + ')') ;
     }
 }
