@@ -21,6 +21,8 @@ public class Reader {
         DocumentBuilder builder = f.newDocumentBuilder();
         Document document = builder.parse(file);
 
+        collection.setName(document.getElementsByTagName("collection").item(0).getAttributes().getNamedItem("name").getTextContent());
+
         NodeList arias = document.getElementsByTagName("aria");
         for (int i = 0; i < arias.getLength(); ++i) {
             collection.add(Parser.parseNodeToAria(arias.item(i)));

@@ -38,7 +38,7 @@ public class Main {
                     collection.print();
                     break;
                 case 2:
-                    Disk disk = new Disk("DVD");
+                    Disk disk = new Disk();
                     disk.write(collection);
                     disk.play();
                     break;
