@@ -1,6 +1,6 @@
 import by.bsu.devices.Disk;
 import by.bsu.music.Collection;
-import by.bsu.music.Composition;
+import by.bsu.music.compositions.Composition;
 import by.bsu.myUtil.Reader;
 import org.xml.sax.SAXException;
 
@@ -15,7 +15,7 @@ public class Main {
     private static String menu = "1 - показать коллекцию\n" +
             "2 - записать на диск и воспроизвести\n" +
             "3 - подсчитать продолжительность\n" +
-            "4 -  сортировка по стилю\n" +
+            "4 - сортировка по стилю\n" +
             "5 - найти композицию по диапазону\n" +
             "0 - выход";
 

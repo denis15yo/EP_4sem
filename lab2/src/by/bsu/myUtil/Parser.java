@@ -1,6 +1,7 @@
 package by.bsu.myUtil;
 
 import by.bsu.music.*;
+import by.bsu.music.compositions.*;
 import org.w3c.dom.Node;
 
 public class Parser {

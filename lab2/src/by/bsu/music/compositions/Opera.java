@@ -1,4 +1,7 @@
-package by.bsu.music;
+package by.bsu.music.compositions;
+
+import by.bsu.music.Musician;
+import by.bsu.music.Style;
 
 public class Opera extends Composition {
     public Opera() {

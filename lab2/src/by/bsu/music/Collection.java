@@ -1,6 +1,7 @@
 package by.bsu.music;
 
 import by.bsu.content.Content;
+import by.bsu.music.compositions.Composition;
 
 import java.util.ArrayList;
 import java.util.Comparator;

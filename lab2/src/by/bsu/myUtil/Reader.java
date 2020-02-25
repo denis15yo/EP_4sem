@@ -1,7 +1,7 @@
 package by.bsu.myUtil;
 
 import by.bsu.music.Collection;
-import by.bsu.music.Composition;
+import by.bsu.music.compositions.Composition;
 import org.w3c.dom.Document;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
