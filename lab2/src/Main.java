@@ -24,7 +24,8 @@ public class Main {
         try {
             collection = Reader.readMusicalCollectionFromXML(new File("collection.xml"));
         } catch (ParserConfigurationException | SAXException | IOException e) {
-            e.printStackTrace();
+            System.err.println("Ошибка при чтении файла. Программа завершена.");
+            System.exit(0);
         }
 
         int choice;

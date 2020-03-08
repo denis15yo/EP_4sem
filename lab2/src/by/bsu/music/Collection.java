@@ -10,8 +10,6 @@ import java.util.Optional;
 public class Collection<T extends Composition> extends ArrayList<T> implements Content {
     private String name = "unknown-collection";
 
-
-
     public void setName(String name) {
         this.name = name;
     }
