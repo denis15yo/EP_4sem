@@ -5,7 +5,9 @@ import tour.Tour;
 
 import javax.swing.*;
 import javax.swing.table.AbstractTableModel;
+import javax.swing.table.DefaultTableModel;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -14,6 +16,12 @@ public class ToursTableModel extends AbstractTableModel {
 
     private Map<Country, ImageIcon> icons;
     private List<Boolean> checkBoxes;
+
+    public ToursTableModel() {
+        model = new ArrayList<>();
+        icons = new HashMap<>();
+        checkBoxes = new ArrayList<>();
+    }
 
     public ToursTableModel(List<Tour> model, Map<Country, ImageIcon> icons) {
         this.model = model;
@@ -26,7 +34,10 @@ public class ToursTableModel extends AbstractTableModel {
 
     @Override
     public int getRowCount() {
-        return model.size();
+        if(model == null){
+            return 1;
+        }
+        return model.size() + 1;
     }
 
     @Override
@@ -38,13 +49,13 @@ public class ToursTableModel extends AbstractTableModel {
     public String getColumnName(int columnIndex) {
         switch (columnIndex){
             case 0 :
-                return "Flag";
+                return "Страна";
             case 1:
-                return "Description";
+                return "Описание";
             case 2:
-                return "Price";
+                return "Цена";
             case 3:
-                return "Select";
+                return "Выбрать";
         }
         return null;
     }
@@ -62,11 +73,25 @@ public class ToursTableModel extends AbstractTableModel {
 
     @Override
     public boolean isCellEditable(int rowIndex, int columnIndex) {
-        return columnIndex == 3;
+        return columnIndex == 3 && rowIndex != getRowCount() - 1;
     }
 
     @Override
     public Object getValueAt(int rowIndex, int columnIndex) {
+        if(rowIndex == getRowCount() - 1){
+            if(columnIndex == 2){
+                int sum = 0;
+                for(int i = 0; i < checkBoxes.size(); ++i){
+                    if(checkBoxes.get(i)){
+                        sum += model.get(i).getPrice();
+                    }
+                }
+                return sum;
+            }
+            else{
+                return null;
+            }
+        }
         switch (columnIndex){
             case 0 : return icons.get(model.get(rowIndex).getCountry());
             case 1 : return model.get(rowIndex).getDescription();
@@ -80,7 +105,13 @@ public class ToursTableModel extends AbstractTableModel {
     public void setValueAt(Object aValue, int rowIndex, int columnIndex) {
         if(columnIndex == 3){
             checkBoxes.set(rowIndex, !checkBoxes.get(rowIndex));
+            fireTableDataChanged();
         }
+    }
+
+    public void addTour(Tour tour){
+        model.add(tour);
+        checkBoxes.add(model.size() - 1, false);
     }
 }
 

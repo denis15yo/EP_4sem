@@ -24,4 +24,16 @@ public class Tour {
     public int getPrice() {
         return price;
     }
+
+    public void setCountry(Country country) {
+        this.country = country;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public void setPrice(int price) {
+        this.price = price;
+    }
 }

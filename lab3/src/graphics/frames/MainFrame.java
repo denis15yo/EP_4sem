@@ -36,7 +36,7 @@ public class MainFrame extends JFrame {
         initTours();
 
         countriesPanel = new CountriesPanel(listModel, icons, capitals);
-        toursPanel = new ToursPanel(tours, icons);
+        toursPanel = new ToursPanel(this, tours, icons);
 
         tabbedPane = new JTabbedPane();
         tabbedPane.addTab("Countries", countriesPanel);
@@ -75,7 +75,7 @@ public class MainFrame extends JFrame {
         tours.add(new Tour(new Country("Italy"), "<html>Всегда гарантированный выезд.<br>" +
                 "Экскурсионный тур по Италии. Маршрут:<br> Вена-Флоренция-Сан-Джиминьяно-Рим-Падуя-Ватикан-Венеция-Брно.",195));
         tours.add(new Tour(new Country("Switzerland"), "<html>Швейцария без ночных переездов!<br>Люцерн, Цюрих, " +
-                "подъем в Альпы,<br>Берн, Женева, Швейцарская Ривьера, Страсбург,<br>Нюрнберг - все в 1 туре.</html>", 245));
+                "подъем в Альпы,<br>Берн, Женева, Швейцарская Ривьера, Страсбург, Нюрнберг - все в 1 туре.</html>", 245));
         tours.add(new Tour(new Country("Spain"), "<html>Раннее бронирование до 1-го апреля.<br>Хит последних 5 лет. " +
                 "Неделя в Испании+Париж+<br>Берлин+Барселона+Монако+Венеция+Вена.</html>", 395));
         tours.add(new Tour(new Country("Portugal"), "<html>Экскурсии по всей Европе+<br>неделя отдыха на юге Испании.</html>", 640));
