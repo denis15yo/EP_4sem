@@ -6,7 +6,7 @@ import models.ToursTableModel;
 import tour.Tour;
 
 import javax.swing.*;
-import javax.swing.table.DefaultTableCellRenderer;
+import javax.swing.table.TableCellRenderer;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -43,7 +43,7 @@ public class ToursPanel extends JPanel {
         table.setGridColor(Color.BLACK);
         table.setRowSelectionAllowed(false);
         for(int i = 0; i < table.getColumnCount() - 1; ++i){
-            table.getColumnModel().getColumn(i).setCellRenderer(new CellRenderer());
+            table.getColumnModel().getColumn(i).setCellRenderer(new MyCellRenderer());
         }
 
         table.addMouseListener(new MouseAdapter() {
@@ -54,7 +54,7 @@ public class ToursPanel extends JPanel {
                     int row = table.rowAtPoint(point);
                     int column = table.columnAtPoint(point);
 
-                    if (column == 3) {
+                    if (row >= table.getRowCount() - 1 || column == 3) {
                         return;
                     }
 
@@ -123,21 +123,5 @@ public class ToursPanel extends JPanel {
 
         add(new JScrollPane(table), BorderLayout.CENTER);
         add(addButton, BorderLayout.SOUTH);
-    }
-
-    static class CellRenderer extends DefaultTableCellRenderer{
-        @Override
-        public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
-            super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
-
-            if(column == 0){
-                setIcon((Icon) value);
-                setText("");
-            }
-
-            setBackground(Color.WHITE);
-            setForeground(Color.BLACK);
-            return this;
-        }
     }
 }

@@ -5,39 +5,35 @@ import tour.Tour;
 
 import javax.swing.*;
 import javax.swing.table.AbstractTableModel;
-import javax.swing.table.DefaultTableModel;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 public class ToursTableModel extends AbstractTableModel {
-    private List<Tour> model;
+    private List<Tour> tours;
 
     private Map<Country, ImageIcon> icons;
     private List<Boolean> checkBoxes;
 
     public ToursTableModel() {
-        model = new ArrayList<>();
+        tours = new ArrayList<>();
         icons = new HashMap<>();
         checkBoxes = new ArrayList<>();
     }
 
-    public ToursTableModel(List<Tour> model, Map<Country, ImageIcon> icons) {
-        this.model = model;
+    public ToursTableModel(List<Tour> tours, Map<Country, ImageIcon> icons) {
+        this.tours = tours;
         this.icons = icons;
         checkBoxes = new ArrayList<>();
-        for(int i = 0; i < this.model.size(); ++i){
+        for(int i = 0; i < this.tours.size(); ++i){
             checkBoxes.add(false);
         }
     }
 
     @Override
     public int getRowCount() {
-        if(model == null){
-            return 1;
-        }
-        return model.size() + 1;
+        return tours.size() + 1;
     }
 
     @Override
@@ -81,9 +77,9 @@ public class ToursTableModel extends AbstractTableModel {
         if(rowIndex == getRowCount() - 1){
             if(columnIndex == 2){
                 int sum = 0;
-                for(int i = 0; i < checkBoxes.size(); ++i){
+                for(int i = 0; i < tours.size(); ++i){
                     if(checkBoxes.get(i)){
-                        sum += model.get(i).getPrice();
+                        sum += tours.get(i).getPrice();
                     }
                 }
                 return sum;
@@ -93,9 +89,9 @@ public class ToursTableModel extends AbstractTableModel {
             }
         }
         switch (columnIndex){
-            case 0 : return icons.get(model.get(rowIndex).getCountry());
-            case 1 : return model.get(rowIndex).getDescription();
-            case 2 : return model.get(rowIndex).getPrice();
+            case 0 : return icons.get(tours.get(rowIndex).getCountry());
+            case 1 : return tours.get(rowIndex).getDescription();
+            case 2 : return tours.get(rowIndex).getPrice();
             case 3 : return checkBoxes.get(rowIndex);
         }
         return null;
@@ -110,8 +106,8 @@ public class ToursTableModel extends AbstractTableModel {
     }
 
     public void addTour(Tour tour){
-        model.add(tour);
-        checkBoxes.add(model.size() - 1, false);
+        tours.add(tour);
+        checkBoxes.add(tours.size() - 1, false);
     }
 }
 
