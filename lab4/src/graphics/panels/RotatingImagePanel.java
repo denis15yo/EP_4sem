@@ -5,7 +5,6 @@ import myUtil.FilesWork;
 import javax.swing.*;
 import java.awt.*;
 import java.io.File;
-import java.io.FilenameFilter;
 
 @SuppressWarnings({"FieldCanBeLocal"})
 public class RotatingImagePanel extends JPanel {
@@ -17,25 +16,26 @@ public class RotatingImagePanel extends JPanel {
     private JSlider speedSlider;
     private JButton directionButton;
 
-
     public RotatingImagePanel(JFrame owner, ImageIcon image) {
         super(new BorderLayout());
 
         this.owner = owner;
+
         drawPanel = new DrawPanel(image);
-        speedSlider = new JSlider(1, 10, 1);
-        speedSlider.setPaintLabels(true);
-        speedSlider.setMajorTickSpacing(1);
-        speedSlider.setToolTipText("Скорость");
-        speedSlider.setPaintTicks(true);
+
         imageButton = new JButton("Картинка");
+        speedSlider = new JSlider(0, 360, 0);
+        speedSlider.setMajorTickSpacing(45);
+        speedSlider.setPaintTicks(true);
+        speedSlider.setPaintLabels(true);
+        speedSlider.setToolTipText("Градусов в секунду");
         directionButton = new JButton("Направление");
 
 
         speedSlider.addChangeListener(e -> drawPanel.setW(speedSlider.getValue()));
         directionButton.addActionListener(e -> drawPanel.changeDirection());
         imageButton.addActionListener(e -> {
-            File file = FilesWork.openFile(this.owner, (dir, name) -> name.matches(".+\\.(png|jpg|jpeg)"));
+            File file = FilesWork.showOpenFileDialog(this.owner, (dir, name) -> name.matches(".+\\.(png|jpg|jpeg)"));
             if(file != null){
                 drawPanel.setImage(new ImageIcon(file.getAbsolutePath()));
             }
@@ -46,10 +46,7 @@ public class RotatingImagePanel extends JPanel {
         box.add(speedSlider);
         box.add(directionButton);
 
-        JPanel temp = new JPanel(new FlowLayout());
-        temp.add(box);
-
         add(drawPanel, BorderLayout.CENTER);
-        add(temp, BorderLayout.SOUTH);
+        add(box, BorderLayout.SOUTH);
     }
 }

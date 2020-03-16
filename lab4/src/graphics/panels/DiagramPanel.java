@@ -18,12 +18,12 @@ import java.io.IOException;
 
 @SuppressWarnings("FieldCanBeLocal")
 public class DiagramPanel extends JPanel {
+    private JFrame owner;
+
     private JFreeChart freeChart;
     private DefaultPieDataset pieDataset;
 
     private JButton openButton;
-
-    private JFrame owner;
 
     public DiagramPanel(JFrame owner) {
         super(new BorderLayout());
@@ -48,7 +48,7 @@ public class DiagramPanel extends JPanel {
     }
 
     private void initPieDataset() throws IOException, ParseException {
-        File file = FilesWork.openFile(owner, (dir, name) -> name.matches(".+\\.json"));
+        File file = FilesWork.showOpenFileDialog(owner, (dir, name) -> name.matches(".+\\.json"));
         if(file == null){
             return;
         }

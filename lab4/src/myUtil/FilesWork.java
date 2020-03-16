@@ -6,7 +6,7 @@ import java.io.File;
 import java.io.FilenameFilter;
 
 public class FilesWork {
-    public static File openFile(JFrame owner, FilenameFilter filenameFilter){
+    public static File showOpenFileDialog(JFrame owner, FilenameFilter filenameFilter){
         FileDialog dlg = new FileDialog(owner, "Открыть", FileDialog.LOAD);
         dlg.setDirectory(System.getProperty("user.dir"));
         dlg.setMultipleMode(false);
