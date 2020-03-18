@@ -17,7 +17,7 @@ public class MainFrame extends JFrame {
         setDefaultCloseOperation(EXIT_ON_CLOSE);
 
         clockPanel = new ClockPanel();
-        rotatingImagePanel = new RotatingImagePanel(this, new ImageIcon("flag_afghanistan.png"));
+        rotatingImagePanel = new RotatingImagePanel(this);
         diagramPanel = new DiagramPanel(this);
 
         JTabbedPane tabbedPane = new JTabbedPane();

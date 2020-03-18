@@ -37,7 +37,9 @@ public class DiagramPanel extends JPanel {
         openButton.addActionListener(e -> {
             try {
                 initPieDataset();
-            } catch (IOException | ParseException ignored) {}
+            } catch (IOException | ParseException ex) {
+                JOptionPane.showMessageDialog(DiagramPanel.this, "Ошибка чтения файла!", "Ошибка", JOptionPane.ERROR_MESSAGE);
+            }
         });
         JPanel openButtonPanel = new JPanel(new FlowLayout());
         openButtonPanel.add(openButton);

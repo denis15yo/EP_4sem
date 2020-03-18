@@ -10,19 +10,17 @@ public class DrawPanel extends JPanel {
 
     private Timer timer;
 
-    private double angle;
+    private double angle = 0;
     private int w = 0;
     private int direction = 1;
 
     private ImageIcon image;
 
-    public DrawPanel(ImageIcon image) {
-        super(new BorderLayout());
-        this.image = image;
-
+    public DrawPanel() {
         setPreferredSize(new Dimension(500, 500));
 
-        angle = 0;
+        image = new ImageIcon();
+
         timer = new Timer(DELAY, e -> {
             angle += (double)w * DELAY / SECOND * Math.PI / 180 * direction;
             if(angle > 2 * Math.PI){

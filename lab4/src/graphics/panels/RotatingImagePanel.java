@@ -16,12 +16,12 @@ public class RotatingImagePanel extends JPanel {
     private JSlider speedSlider;
     private JButton directionButton;
 
-    public RotatingImagePanel(JFrame owner, ImageIcon image) {
+    public RotatingImagePanel(JFrame owner) {
         super(new BorderLayout());
 
         this.owner = owner;
 
-        drawPanel = new DrawPanel(image);
+        drawPanel = new DrawPanel();
 
         imageButton = new JButton("Картинка");
         speedSlider = new JSlider(0, 360, 0);
