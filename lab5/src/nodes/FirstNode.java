@@ -18,10 +18,10 @@ import java.io.FileNotFoundException;
 public class FirstNode extends HBox {
     private ObservableList<String> observableList;
 
-    private Image redCircle, greenCircle;
-    private ImageView imageView;
     private TextField textField;
     private ComboBox<String> comboBox;
+    private Image redCircle, greenCircle;
+    private ImageView imageView;
 
     private MyHandler handler;
 
@@ -50,7 +50,7 @@ public class FirstNode extends HBox {
         textField.setOnAction(handler);
         comboBox.setOnAction(handler);
 
-        getChildren().addAll(imageView, textField, comboBox);
+        getChildren().addAll(comboBox, textField, imageView);
     }
 
     class MyHandler implements EventHandler<ActionEvent>{
