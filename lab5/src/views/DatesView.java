@@ -21,10 +21,10 @@ import java.util.stream.Stream;
 public class DatesView extends HBox {
     private Label textLabel;
     private TextArea textArea;
+    private Button openButton;
 
     private Label datesLabel;
     private ListView<String> listView;
-    private Button openButton;
 
     public DatesView() {
         super(20);
@@ -57,21 +57,19 @@ public class DatesView extends HBox {
             File file = fileChooser.showOpenDialog(null);
             if (file != null) {
                 try {
-                    Stream<String> stringStream = Files.lines(Paths.get(file.getAbsolutePath()));
+                    Stream<String> stringStream = Files.lines(Paths.get(file.toURI()));
                     StringBuilder text = new StringBuilder("");
                     stringStream.forEachOrdered(s -> {
                         text.append(s).append("\n");
                     });
                     textArea.setText(text.toString());
-                } catch (IOException ignored) {
-                }
+                } catch (IOException ignored) {}
             }
         });
 
-        VBox textBox = new VBox(5, textLabel, textArea);
+        VBox textBox = new VBox(20, new VBox(5, textLabel, textArea), openButton);
         VBox datesBox = new VBox(5, datesLabel, listView);
-        VBox vBox = new VBox(20, textBox, openButton);
 
-        getChildren().addAll(vBox, datesBox);
+        getChildren().addAll(textBox, datesBox);
     }
 }
