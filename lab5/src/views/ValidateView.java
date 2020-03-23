@@ -1,4 +1,4 @@
-package nodes;
+package views;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -9,13 +9,13 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
-import myUtil.RegExpr;
+import myUtil.RegularExpressions;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 
 @SuppressWarnings("FieldCanBeLocal")
-public class FirstNode extends HBox {
+public class ValidateView extends HBox {
     private ObservableList<String> observableList;
 
     private TextField textField;
@@ -25,7 +25,7 @@ public class FirstNode extends HBox {
 
     private MyHandler handler;
 
-    public FirstNode() {
+    public ValidateView() {
         super(10);
 
         observableList = FXCollections.observableArrayList(
@@ -57,7 +57,7 @@ public class FirstNode extends HBox {
 
         @Override
         public void handle(ActionEvent event) {
-            if(textField.getText().matches(RegExpr.regExpressions.get(comboBox.getValue()))){
+            if(textField.getText().matches(RegularExpressions.mapOfRegularExpressions.get(comboBox.getValue()))){
                 imageView.setImage(greenCircle);
             }
             else{
