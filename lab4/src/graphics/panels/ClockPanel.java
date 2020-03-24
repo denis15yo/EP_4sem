@@ -27,7 +27,8 @@ public class ClockPanel extends JPanel {
     }
 
     @Override
-    public void paint(Graphics g) {
+    public void paintComponent(Graphics g) {
+        super.paintComponent(g);
         int r = Math.min(getWidth(), getHeight()) / 4;
         int centerX = getWidth() / 2;
         int centerY = getHeight() / 2;

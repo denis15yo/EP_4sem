@@ -24,15 +24,15 @@ public class RotatingImagePanel extends JPanel {
         drawPanel = new DrawPanel();
 
         imageButton = new JButton("Картинка");
-        speedSlider = new JSlider(0, 360, 0);
-        speedSlider.setMajorTickSpacing(45);
+        speedSlider = new JSlider(0, 2500, 0);
+        speedSlider.setMajorTickSpacing(500);
         speedSlider.setPaintTicks(true);
         speedSlider.setPaintLabels(true);
-        speedSlider.setToolTipText("Градусов в секунду");
+        speedSlider.setToolTipText("Линейная скорость");
         directionButton = new JButton("Направление");
 
 
-        speedSlider.addChangeListener(e -> drawPanel.setW(speedSlider.getValue()));
+        speedSlider.addChangeListener(e -> drawPanel.setV(speedSlider.getValue()));
         directionButton.addActionListener(e -> drawPanel.changeDirection());
         imageButton.addActionListener(e -> {
             File file = FilesWork.showOpenFileDialog(this.owner, (dir, name) -> name.matches(".+\\.(png|jpg|jpeg)"));

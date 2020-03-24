@@ -2,6 +2,8 @@ package graphics.panels;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ComponentAdapter;
+import java.awt.event.ComponentEvent;
 
 @SuppressWarnings("FieldCanBeLocal")
 public class DrawPanel extends JPanel {
@@ -10,8 +12,9 @@ public class DrawPanel extends JPanel {
 
     private Timer timer;
 
+    private int r = 100;
     private double angle = 0;
-    private int w = 0;
+    private int v = 0;
     private int direction = 1;
 
     private ImageIcon image;
@@ -22,7 +25,7 @@ public class DrawPanel extends JPanel {
         image = new ImageIcon();
 
         timer = new Timer(DELAY, e -> {
-            angle += (double)w * DELAY / SECOND * Math.PI / 180 * direction;
+            angle += (double) v / r * DELAY / SECOND * Math.PI / 180 * direction;
             if(angle > 2 * Math.PI){
                 angle -= 2 * Math.PI;
             }
@@ -32,11 +35,17 @@ public class DrawPanel extends JPanel {
             repaint();
         });
         timer.start();
+
+        addComponentListener(new ComponentAdapter() {
+            @Override
+            public void componentResized(ComponentEvent e) {
+                r = Math.min(getWidth(), getHeight()) / 4;
+            }
+        });
     }
 
     @Override
     public void paint(Graphics g) {
-        int r = Math.min(getWidth(), getHeight()) / 4;
         int centerX = getWidth() / 2;
         int centerY = getHeight() / 2;
         int x = (int) (centerX + r * Math.sin(angle));
@@ -45,8 +54,8 @@ public class DrawPanel extends JPanel {
         g.drawImage(image.getImage(), x - image.getIconWidth() / 2, y - image.getIconHeight() / 2, null);
     }
 
-    public void setW(int w) {
-        this.w = w;
+    public void setV(int v) {
+        this.v = v;
     }
     public void changeDirection(){
         direction *= -1;
