@@ -10,7 +10,7 @@ public class RegularExpressions {
         mapOfRegularExpressions = new HashMap<>();
         mapOfRegularExpressions.put("Натуральное число", "[1-9]\\d*");
         mapOfRegularExpressions.put("Целое число", "(-?[1-9]\\d*|0)");
-        mapOfRegularExpressions.put("Число с плавающей запятой", "(-?[1-9]\\d*|0)?(\\.\\d*(e(-?[1-9]\\d*|0))?|(e(-?[1-9]\\d*|0)))");
+        mapOfRegularExpressions.put("Число с плавающей запятой", "(-?[1-9]\\d*|0)?\\.\\d*(e(-?[1-9]\\d*|0))?|(-?[1-9]\\d*|0)(e(-?[1-9]\\d*|0))");
 //           1 - NO
 //           .1 - YES
 //           1. - YES
