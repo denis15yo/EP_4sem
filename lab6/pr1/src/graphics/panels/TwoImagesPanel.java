@@ -21,6 +21,7 @@ public class TwoImagesPanel extends JPanel {
 
     public TwoImagesPanel() {
         super(new BorderLayout());
+
         mixedImagePanel = new MixedImagePanel(x0, y0);
         originalImagePanel = new OriginalImagePanel(x0, y0);
         mixButton = new JButton("Перемешать");

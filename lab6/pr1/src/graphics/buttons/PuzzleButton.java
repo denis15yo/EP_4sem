@@ -1,18 +1,16 @@
-package graphics.panels;
+package graphics.buttons;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionAdapter;
 
-public class MyButton extends JButton {
+public class PuzzleButton extends JButton {
     private int shouldX, shouldY;
 
-    public MyButton(int shouldX, int shouldY, ImageIcon imageIcon) {
-        setOpaque(false);
-//        setContentAreaFilled(false);
+    public PuzzleButton(int shouldX, int shouldY, ImageIcon imageIcon) {
+        setContentAreaFilled(false);
         setBorderPainted(false);
-//        setFocusPainted(false);
         this.shouldX = shouldX;
         this.shouldY = shouldY;
         setIcon(imageIcon);

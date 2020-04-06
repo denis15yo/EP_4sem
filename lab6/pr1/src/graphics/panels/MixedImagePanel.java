@@ -1,5 +1,7 @@
 package graphics.panels;
 
+import graphics.buttons.PuzzleButton;
+
 import javax.swing.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -8,10 +10,10 @@ import java.awt.image.BufferedImage;
 public class MixedImagePanel extends JPanel {
     private BufferedImage image;
 
-    private int rowCount = 4, columnCount = 4;
-    int widthPuzzle, heightPuzzle;
-    int x0, y0;
-    private MyButton[][] puzzles;
+    private static final int rowCount = 4, columnCount = 4;
+    private int widthPuzzle, heightPuzzle;
+    private int x0, y0;
+    private PuzzleButton[][] puzzles;
 
     public MixedImagePanel(int x0, int y0) {
         super(null);
@@ -20,23 +22,16 @@ public class MixedImagePanel extends JPanel {
     }
 
     public void setImage(BufferedImage image) {
+        removeAll();
+        repaint();
+        this.image = image;
         widthPuzzle = image.getWidth() / columnCount;
         heightPuzzle = image.getHeight() / rowCount;
-        this.image = image;
-        puzzles = new MyButton[rowCount][columnCount];
+        puzzles = new PuzzleButton[rowCount][columnCount];
         for(int i = 0; i < rowCount; ++i) {
             for (int j = 0; j < columnCount; ++j) {
-                puzzles[i][j] = new MyButton(x0 + j * widthPuzzle, y0 + i * heightPuzzle,
+                puzzles[i][j] = new PuzzleButton(x0 + j * widthPuzzle, y0 + i * heightPuzzle,
                         new ImageIcon(image.getSubimage(j * widthPuzzle, i * heightPuzzle, widthPuzzle, heightPuzzle)));
-                add(puzzles[i][j]);
-            }
-        }
-    }
-
-    public void mix(){
-        for(int i = 0; i < rowCount; ++i){
-            for(int j = 0; j < columnCount; ++j){
-                puzzles[i][j].setLocation((int) (Math.random() * (getWidth() - widthPuzzle)), y0 + image.getHeight());
                 int finalI = i;
                 int finalJ = j;
                 puzzles[i][j].addMouseListener(new MouseAdapter() {
@@ -45,23 +40,33 @@ public class MixedImagePanel extends JPanel {
                         super.mouseReleased(e);
                         int x = e.getXOnScreen(), y = e.getYOnScreen();
                         if(x >= x0 && x <= x0 + image.getWidth()
-                        && y >= y0 && y <= y0 + image.getHeight()){
+                                && y >= y0 && y <= y0 + image.getHeight()){
                             puzzles[finalI][finalJ].setLocation(x0 + (x - x0) / widthPuzzle * widthPuzzle, y0 + (y - y0) / heightPuzzle * heightPuzzle);
                             if(check()){
-                                JOptionPane.showMessageDialog(null, "Собрали!", "Поздравляю", JOptionPane.PLAIN_MESSAGE);
+                                JOptionPane.showMessageDialog(null, "Собрали!", "Победа!", JOptionPane.PLAIN_MESSAGE);
                             }
                         }
                     }
                 });
             }
         }
+    }
+
+    public void mix(){
+        removeAll();
+        for(PuzzleButton[] row : puzzles){
+            for(PuzzleButton pb : row){
+                pb.setLocation((int) (Math.random() * (getWidth() - widthPuzzle)), y0 + image.getHeight());
+                add(pb);
+            }
+        }
         repaint();
     }
 
     private boolean check(){
-        for(MyButton[] r : puzzles){
-            for(MyButton b : r){
-                if(b.getX() != b.getShouldX() || b.getY() != b.getShouldY()){
+        for(PuzzleButton[] row : puzzles){
+            for(PuzzleButton pb : row){
+                if(pb.getX() != pb.getShouldX() || pb.getY() != pb.getShouldY()){
                     return false;
                 }
             }
