@@ -53,10 +53,14 @@ public class MixedImagePanel extends JPanel {
     }
 
     public void mix(){
+        if(image == null){
+            return;
+        }
         removeAll();
         for(PuzzleButton[] row : puzzles){
             for(PuzzleButton pb : row){
-                pb.setLocation((int) (Math.random() * (getWidth() - widthPuzzle)), y0 + image.getHeight());
+                pb.setLocation((int) (Math.random() * (getWidth() - widthPuzzle)),
+                        (int) (Math.random() * (getHeight() - heightPuzzle - image.getHeight())) + image.getHeight());
                 add(pb);
             }
         }
