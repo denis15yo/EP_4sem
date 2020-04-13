@@ -35,6 +35,4 @@ public class KeywordManager implements Observable {
         this.lastKeyCode = lastKeyCode;
         updateAllObservers();
     }
-
-
 }
