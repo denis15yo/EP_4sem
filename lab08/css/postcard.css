@@ -1,0 +1,32 @@
+figure {
+	text-align: center;
+}
+
+.card {
+	background-color: lightgray;
+  	height: 45vh;
+  	margin-top: 20%;
+  	font-family: 'Open Sans', sans-serif;
+}
+.img-wrap {
+  position: relative;
+}
+
+.img-wrap h1 {
+  font-family: "Open Sans", sans-serif;
+  font-weight: 500;
+  color: firebrick;
+  position: absolute;
+  left: 0;
+  top: 270px;
+  width: 100%;
+}
+.img-wrap p{
+  font-family: "Open Sans", sans-serif;
+  font-weight: 300;
+  font-size: large;
+  position: absolute;
+  left: 0;
+  top: 320px;
+  width: 100%;
+}

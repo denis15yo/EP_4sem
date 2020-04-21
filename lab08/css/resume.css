@@ -1,0 +1,25 @@
+.leftimg {
+    float:left; /* Выравнивание по левому краю */
+    margin: 7px 7px 7px 0; /* Отступы вокруг картинки */
+    height: 310px;
+}
+ .info {
+    font-family: "Comic Sans Ms", cursive;
+    font-size: large;
+ }
+.section{
+    margin-left: auto;
+    margin-right: auto;
+    background-color: lightcyan;
+    color: #5b4962;
+    font-family: "Comic Sans", cursive;
+    padding-left: 15px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    margin-top: 5px;
+
+}
+
+li {
+    font-size: large;
+}
