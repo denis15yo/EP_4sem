@@ -1,5 +1,6 @@
 package by.bsu.table;
 
+import by.bsu.essenses.expressions.operands.CellReference;
 import by.bsu.myUtil.Parser;
 
 import javax.swing.*;
@@ -41,5 +42,16 @@ public class ExcelTableModel extends AbstractTableModel {
     @Override
     public Object getValueAt(int rowIndex, int columnIndex) {
         return table[rowIndex][columnIndex];
+    }
+
+    public Cell getByCellReference(CellReference cellReference){
+        String column = cellReference.getColumn();
+        int j = 0;
+        int temp = 1;
+        for(int i = column.length() - 1; i >= 0; --i){
+            j += (column.charAt(i) - 'A' + 1) * temp;
+            temp *= 26;
+        }
+        return table[cellReference.getRow() - 1][j - 1];
     }
 }

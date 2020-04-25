@@ -8,6 +8,7 @@ import javax.swing.*;
 public class ExcelFrame extends JFrame {
     private final ExcelPanel excelPanel;
     public ExcelFrame() {
+        super("Excel Lite");
         excelPanel = new ExcelPanel();
 
         add(excelPanel);

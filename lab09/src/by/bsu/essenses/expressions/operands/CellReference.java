@@ -1,7 +1,6 @@
 package by.bsu.essenses.expressions.operands;
 
 import by.bsu.essenses.MyDate;
-import by.bsu.table.Cell;
 import by.bsu.table.ExcelTableModel;
 
 public class CellReference implements Operand {
@@ -15,18 +14,19 @@ public class CellReference implements Operand {
 
     @Override
     public MyDate getDateValue(ExcelTableModel excelTableModel) {
-        int j = 0;
-        int temp = 1;
-        for(int i = column.length() - 1; i >= 0; --i){
-            j += (column.charAt(i) - 'A' + 1) * temp;
-            temp *= 26;
-        }
-        Cell cell = (Cell) excelTableModel.getValueAt(row - 1, j - 1);
-        return cell.getExpression().calculate(excelTableModel);
+        return excelTableModel.getByCellReference(this).getExpression().calculate(excelTableModel);
     }
 
     @Override
     public String toString() {
         return column + row;
+    }
+
+    public int getRow() {
+        return row;
+    }
+
+    public String getColumn() {
+        return column;
     }
 }
