@@ -11,12 +11,16 @@ public class CellRenderer extends JLabel implements TableCellRenderer {
 
     @Override
     public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
+        if(value == null){
+            setText("");
+            return this;
+        }
         Cell cell = (Cell)value;
         if(hasFocus){
-            setText(cell.getExpr());
+            setText(cell.getExpression().toString());
         }
         else{
-            setText(cell.getValue());
+            setText(cell.getExpression().calculate((ExcelTableModel) table.getModel()).toString());
         }
 
         return this;

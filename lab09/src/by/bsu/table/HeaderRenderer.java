@@ -11,6 +11,7 @@ public class HeaderRenderer implements TableCellRenderer {
     public HeaderRenderer(JTable jTable) {
         renderer = (DefaultTableCellRenderer) jTable.getTableHeader().getDefaultRenderer();
         renderer.setHorizontalAlignment(JLabel.CENTER);
+        renderer.setPreferredSize(new Dimension(100, jTable.getRowHeight()));
     }
 
     @Override

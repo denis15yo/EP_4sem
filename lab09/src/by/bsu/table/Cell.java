@@ -1,27 +1,23 @@
 package by.bsu.table;
 
+import by.bsu.essenses.expressions.Expression;
+
 public class Cell {
-    private String expr;
-    private String value;
+    private Expression expression;
 
-    public Cell(String expr, String value) {
-        this.expr = expr;
-        this.value = value;
+    public Cell() {
     }
 
-    public String getExpr() {
-        return expr;
+    public Cell(Expression expression) {
+        this.expression = expression;
     }
 
-    public void setExpr(String expr) {
-        this.expr = expr;
+    public Expression getExpression() {
+        return expression;
     }
 
-    public String getValue() {
-        return value;
-    }
-
-    public void setValue(String value) {
-        this.value = value;
+    @Override
+    public String toString() {
+        return (expression == null) ? "" : expression.toString();
     }
 }

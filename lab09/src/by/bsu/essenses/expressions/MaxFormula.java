@@ -1,0 +1,34 @@
+package by.bsu.essenses.expressions;
+
+import by.bsu.essenses.MyDate;
+import by.bsu.essenses.expressions.operands.Operand;
+import by.bsu.table.ExcelTableModel;
+
+import java.util.Calendar;
+
+public class MaxFormula extends ExtremumFormula {
+    @Override
+    public MyDate calculate(ExcelTableModel excelTableModel) {
+        Calendar maxCalendar = Calendar.getInstance();
+        maxCalendar.setTime(operands.get(0).getDateValue(excelTableModel));
+        for(Operand o : operands){
+            Calendar currentCalendar = Calendar.getInstance();
+            currentCalendar.setTime(o.getDateValue(excelTableModel));
+            if(maxCalendar.before(currentCalendar)){
+                maxCalendar = currentCalendar;
+            }
+        }
+        return new MyDate(maxCalendar.getTime());
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append("=МАКС(");
+        for(int i = 0; i < operands.size() - 1; ++i){
+            stringBuilder.append(operands.get(i)).append(", ");
+        }
+        stringBuilder.append(operands.get(operands.size() - 1)).append(")");
+        return stringBuilder.toString();
+    }
+}
