@@ -1,8 +1,8 @@
 package by.bsu.graphics.panels;
 
-import by.bsu.table.*;
-import by.bsu.table.rowHeader.RowHeaderListModel;
-import by.bsu.table.rowHeader.RowHeaderRenderer;
+import by.bsu.excelTable.*;
+import by.bsu.excelTable.rowHeader.RowHeaderListModel;
+import by.bsu.excelTable.rowHeader.RowHeaderRenderer;
 
 import javax.swing.*;
 import java.awt.*;

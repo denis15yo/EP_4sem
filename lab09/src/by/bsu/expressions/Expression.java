@@ -1,7 +1,7 @@
-package by.bsu.essenses.expressions;
+package by.bsu.expressions;
 
-import by.bsu.essenses.MyDate;
-import by.bsu.table.ExcelTableModel;
+import by.bsu.expressions.operands.MyDate;
+import by.bsu.excelTable.ExcelTableModel;
 
 public interface Expression {
     MyDate calculate(ExcelTableModel excelTableModel);

@@ -1,8 +1,7 @@
-package by.bsu.essenses;
+package by.bsu.expressions.operands;
 
-import by.bsu.essenses.expressions.Expression;
-import by.bsu.essenses.expressions.operands.Operand;
-import by.bsu.table.ExcelTableModel;
+import by.bsu.expressions.Expression;
+import by.bsu.excelTable.ExcelTableModel;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;

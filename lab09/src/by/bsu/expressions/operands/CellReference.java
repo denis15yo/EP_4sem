@@ -1,7 +1,6 @@
-package by.bsu.essenses.expressions.operands;
+package by.bsu.expressions.operands;
 
-import by.bsu.essenses.MyDate;
-import by.bsu.table.ExcelTableModel;
+import by.bsu.excelTable.ExcelTableModel;
 
 public class CellReference implements Operand {
     private final int row;

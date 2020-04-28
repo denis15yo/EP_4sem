@@ -1,8 +1,8 @@
-package by.bsu.essenses.expressions;
+package by.bsu.expressions.formulas;
 
-import by.bsu.essenses.MyDate;
-import by.bsu.essenses.expressions.operands.Operand;
-import by.bsu.table.ExcelTableModel;
+import by.bsu.expressions.operands.MyDate;
+import by.bsu.expressions.operands.Operand;
+import by.bsu.excelTable.ExcelTableModel;
 
 import java.util.Calendar;
 
@@ -15,6 +15,10 @@ public class OffsetFormula extends Formula {
         this.operand = operand;
         this.operation = operation;
         this.numericalConstant = numericalConstant;
+    }
+
+    public Operand getOperand() {
+        return operand;
     }
 
     @Override

@@ -1,9 +1,10 @@
 package by.bsu.myUtil;
 
-import by.bsu.essenses.MyDate;
-import by.bsu.essenses.expressions.*;
-import by.bsu.essenses.expressions.operands.CellReference;
-import by.bsu.essenses.expressions.operands.Operand;
+import by.bsu.expressions.Expression;
+import by.bsu.expressions.formulas.*;
+import by.bsu.expressions.operands.CellReference;
+import by.bsu.expressions.operands.MyDate;
+import by.bsu.expressions.operands.Operand;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;

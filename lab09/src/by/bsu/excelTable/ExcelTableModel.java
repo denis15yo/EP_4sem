@@ -1,4 +1,4 @@
-package by.bsu.excelLite;
+package by.bsu.excelTable;
 
 import by.bsu.expressions.operands.Cell;
 import by.bsu.expressions.operands.CellReference;
@@ -29,7 +29,12 @@ public class ExcelTableModel extends AbstractTableModel {
     public void setValueAt(Object aValue, int rowIndex, int columnIndex) {
         try {
             table[rowIndex][columnIndex] = new Cell(Parser.parseToExpression((String) aValue));
+            if(table[rowIndex][columnIndex].hasCycle(this)){
+                table[rowIndex][columnIndex] = null;
+                throw new ParseException("Циклическая формула!", 0);
+            }
         } catch (ParseException e) {
+            table[rowIndex][columnIndex] = null;
             JOptionPane.showMessageDialog(null, e.getMessage(), "Ошибка", JOptionPane.ERROR_MESSAGE);
         }
         fireTableCellUpdated(rowIndex, columnIndex);

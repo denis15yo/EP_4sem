@@ -1,4 +1,4 @@
-package by.bsu.excelLite;
+package by.bsu.excelTable;
 
 import by.bsu.expressions.operands.Cell;
 
