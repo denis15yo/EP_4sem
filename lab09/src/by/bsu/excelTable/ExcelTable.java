@@ -1,4 +1,4 @@
-package by.bsu.table;
+package by.bsu.excelLite;
 
 import javax.swing.*;
 import java.awt.*;

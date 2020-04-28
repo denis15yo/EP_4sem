@@ -1,6 +1,7 @@
-package by.bsu.table;
+package by.bsu.excelLite;
 
-import by.bsu.essenses.expressions.operands.CellReference;
+import by.bsu.expressions.operands.Cell;
+import by.bsu.expressions.operands.CellReference;
 import by.bsu.myUtil.Parser;
 
 import javax.swing.*;

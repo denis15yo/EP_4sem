@@ -1,4 +1,4 @@
-package by.bsu.table.rowHeader;
+package by.bsu.excelLite.rowHeader;
 
 import javax.swing.*;
 import javax.swing.table.JTableHeader;

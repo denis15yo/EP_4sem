@@ -1,4 +1,6 @@
-package by.bsu.table;
+package by.bsu.excelLite;
+
+import by.bsu.expressions.operands.Cell;
 
 import javax.swing.*;
 import javax.swing.table.TableCellRenderer;
