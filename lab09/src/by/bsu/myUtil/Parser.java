@@ -40,7 +40,7 @@ public class Parser {
         if(indexOperation < string.length()){
             try{
                 return new OffsetFormula(parseToOperand(string.substring(0, indexOperation)),
-                        operation, Integer.parseInt(string.substring(indexOperation + 1)));
+                        operation, Integer.parseInt(string.substring(indexOperation + 1).trim()));
             }
             catch (NumberFormatException numberFormatException){
                 throw new ParseException("Некорректная OffsetFormula.", 0);
@@ -50,6 +50,7 @@ public class Parser {
     }
 
     public static ExtremumFormula parseToExtremumFormula(String string) throws ParseException {
+        string = string.trim();
         ExtremumFormula extremumFormula;
         if(string.startsWith("МИН")){
             extremumFormula = new MinFormula();
@@ -59,8 +60,9 @@ public class Parser {
             string = string.substring(4);
         }
         else{
-            throw new ParseException("Некорректная МИН/МАКС формула.", 0);
+            throw new ParseException("Некорректная формула.", 0);
         }
+        string = string.trim();
         if(string.charAt(0) != '(' || string.charAt(string.length() - 1) != ')'){
             throw new ParseException("Некорректная МИН/МАКС формула.", 0);
         }
@@ -74,9 +76,8 @@ public class Parser {
 
     public static Operand parseToOperand(String string) throws ParseException {
         string = string.trim();
-        SimpleDateFormat simpleDateFormat = MyDate.DATE_FORMAT;
         try{
-            return new MyDate(simpleDateFormat.parse(string));
+            return parseToMyDate(string);
         } catch (ParseException parseException){
             return parseToCellReference(string);
         }

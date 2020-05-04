@@ -35,9 +35,7 @@ public class Cell {
         if(expression instanceof OffsetFormula){
             OffsetFormula offsetFormula = (OffsetFormula) expression;
             Operand operand = offsetFormula.getOperand();
-            if (hasCycle(excelTableModel, operand)) return true;
-            used = false;
-            return false;
+            return hasCycle(excelTableModel, operand);
         }
         if(expression instanceof ExtremumFormula){
             ExtremumFormula extremumFormula = (ExtremumFormula) expression;
@@ -45,8 +43,6 @@ public class Cell {
             for(Operand operand : operandList){
                 if (hasCycle(excelTableModel, operand)) return true;
             }
-            used = false;
-            return false;
         }
         return false;
     }
@@ -64,10 +60,9 @@ public class Cell {
                 throw new EmptyCellReferenceException();
             }
             used = true;
-            if(cell.hasCycle(excelTableModel)){
-                used = false;
-                return true;
-            }
+            boolean flag = cell.hasCycle(excelTableModel);
+            used = false;
+            return flag;
         }
         return false;
     }
