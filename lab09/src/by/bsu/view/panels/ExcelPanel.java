@@ -1,15 +1,16 @@
-package by.bsu.graphics.panels;
+package by.bsu.view.panels;
 
-import by.bsu.excelTable.*;
-import by.bsu.excelTable.rowHeader.RowHeaderListModel;
-import by.bsu.excelTable.rowHeader.RowHeaderRenderer;
+import by.bsu.view.excelTable.*;
+import by.bsu.view.excelTable.rowHeader.RowHeaderListModel;
+import by.bsu.view.excelTable.rowHeader.RowHeaderRenderer;
+import by.bsu.models.ExcelTableModel;
 
 import javax.swing.*;
 import java.awt.*;
 
 @SuppressWarnings("FieldCanBeLocal")
 public class ExcelPanel extends JPanel {
-    private static final int n = 15;
+    private static final int n = 30;
 
     private final ExcelTable excelTable;
 

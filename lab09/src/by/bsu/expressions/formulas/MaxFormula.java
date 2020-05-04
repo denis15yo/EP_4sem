@@ -2,7 +2,7 @@ package by.bsu.expressions.formulas;
 
 import by.bsu.expressions.operands.MyDate;
 import by.bsu.expressions.operands.Operand;
-import by.bsu.excelTable.ExcelTableModel;
+import by.bsu.models.ExcelTableModel;
 
 import java.util.Calendar;
 

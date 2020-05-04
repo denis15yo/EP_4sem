@@ -1,6 +1,6 @@
 package by.bsu.expressions.operands;
 
-import by.bsu.excelTable.ExcelTableModel;
+import by.bsu.models.ExcelTableModel;
 
 public class CellReference implements Operand {
     private final int row;

@@ -1,6 +1,7 @@
-package by.bsu.excelTable;
+package by.bsu.view.excelTable;
 
-import by.bsu.expressions.operands.Cell;
+import by.bsu.models.Cell;
+import by.bsu.models.ExcelTableModel;
 
 import javax.swing.*;
 import javax.swing.table.TableCellRenderer;

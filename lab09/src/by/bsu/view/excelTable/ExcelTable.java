@@ -1,4 +1,6 @@
-package by.bsu.excelTable;
+package by.bsu.view.excelTable;
+
+import by.bsu.models.ExcelTableModel;
 
 import javax.swing.*;
 import java.awt.*;

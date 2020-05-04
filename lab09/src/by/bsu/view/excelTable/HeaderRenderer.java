@@ -1,4 +1,4 @@
-package by.bsu.excelTable;
+package by.bsu.view.excelTable;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableCellRenderer;

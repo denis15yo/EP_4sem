@@ -1,4 +1,4 @@
-package by.bsu.excelTable.rowHeader;
+package by.bsu.view.excelTable.rowHeader;
 
 import javax.swing.*;
 

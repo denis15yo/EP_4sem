@@ -1,12 +1,16 @@
-package by.bsu.excelTable;
+package by.bsu.models;
 
-import by.bsu.expressions.operands.Cell;
+import by.bsu.exceptions.CyclicFormulaException;
+import by.bsu.exceptions.EmptyCellReferenceException;
+import by.bsu.exceptions.OutOfTableBoundsException;
 import by.bsu.expressions.operands.CellReference;
+import by.bsu.expressions.operands.MyDate;
 import by.bsu.myUtil.Parser;
 
 import javax.swing.*;
 import javax.swing.table.AbstractTableModel;
 import java.text.ParseException;
+import java.util.Date;
 
 public class ExcelTableModel extends AbstractTableModel {
     private final Cell[][] table;
@@ -30,12 +34,14 @@ public class ExcelTableModel extends AbstractTableModel {
         try {
             table[rowIndex][columnIndex] = new Cell(Parser.parseToExpression((String) aValue));
             if(table[rowIndex][columnIndex].hasCycle(this)){
-                table[rowIndex][columnIndex] = null;
-                throw new ParseException("Циклическая формула!", 0);
+                throw new CyclicFormulaException();
             }
-        } catch (ParseException e) {
-            table[rowIndex][columnIndex] = null;
-            JOptionPane.showMessageDialog(null, e.getMessage(), "Ошибка", JOptionPane.ERROR_MESSAGE);
+        } catch (ParseException | CyclicFormulaException | EmptyCellReferenceException | OutOfTableBoundsException e) {
+            table[rowIndex][columnIndex] = new Cell(new MyDate(new Date()));
+            JOptionPane.showMessageDialog(null,
+                    e.getMessage() + " Выставлена текущая дата.",
+                    "Ошибка",
+                    JOptionPane.ERROR_MESSAGE);
         }
         fireTableCellUpdated(rowIndex, columnIndex);
     }
@@ -56,7 +62,7 @@ public class ExcelTableModel extends AbstractTableModel {
         int temp = 1;
         for(int i = column.length() - 1; i >= 0; --i){
             j += (column.charAt(i) - 'A' + 1) * temp;
-            temp *= 26;
+            temp *= ('Z' - 'A') + 1;
         }
         return table[cellReference.getRow() - 1][j - 1];
     }

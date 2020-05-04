@@ -1,13 +1,13 @@
 package by.bsu.expressions.operands;
 
 import by.bsu.expressions.Expression;
-import by.bsu.excelTable.ExcelTableModel;
+import by.bsu.models.ExcelTableModel;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class MyDate extends Date implements Expression, Operand {
-    public static final SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd.MM.yyyy");
+    public static final SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("dd.MM.yy");
 
     public MyDate(Date date) {
         super(date.getTime());
@@ -15,7 +15,7 @@ public class MyDate extends Date implements Expression, Operand {
 
     @Override
     public String toString() {
-        return simpleDateFormat.format(this);
+        return DATE_FORMAT.format(this);
     }
 
     @Override

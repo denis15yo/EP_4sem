@@ -1,6 +1,6 @@
-package by.bsu.graphics.frames;
+package by.bsu.view.frames;
 
-import by.bsu.graphics.panels.ExcelPanel;
+import by.bsu.view.panels.ExcelPanel;
 
 import javax.swing.*;
 
