@@ -10,7 +10,7 @@ import java.awt.*;
 
 @SuppressWarnings("FieldCanBeLocal")
 public class ExcelPanel extends JPanel {
-    private static final int n = 30;
+    private static final int n = 50;
 
     private final ExcelTable excelTable;
 

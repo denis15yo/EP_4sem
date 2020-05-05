@@ -17,7 +17,6 @@ public class ExcelTable extends JTable {
         }
         setRowHeight(30);
 
-//        setFillsViewportHeight(true);
         setAutoResizeMode(AUTO_RESIZE_OFF);
 
         getTableHeader().setDefaultRenderer(new HeaderRenderer(this));
