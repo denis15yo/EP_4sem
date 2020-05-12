@@ -1,0 +1,23 @@
+body {
+	background-color: aquamarine;
+}
+tbody tr:nth-child(odd) {
+
+    background-color: #C9E4F6;/* фон нечетных строк */
+
+  }
+
+tbody tr:nth-child(even) {
+
+    background-color: #B4DAF2;/* фон четных строк */
+
+ }
+
+table {
+	background-color: #B4DAF2;
+	font-size: large;
+}
+
+.lecture{
+	text-decoration: underline;
+}

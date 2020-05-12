@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Форма</title>
+    <link rel="stylesheet" type="text/css" href="css/form.css">
+</head>
+<body bgcolor=lightcyan>
+<form id="studentInfo">
+    <h1>Информация о студенте</h1>
+    <div class="block">
+        <label for="surname">Фамилия:</label>
+        <input id="surname" type="text">
+        <label for="name">Имя:</label>
+        <input id="name" type="text">
+    </div>
+    <div class="block">
+        <label for="date">Дата рождения:</label>
+        <input type="date" name="a" id="date">
+    </div>
+    <div class="block">
+    <label for="selectRegion">Город/область:</label>
+        <select id="selectRegion">
+            <option value="7">Минск</option>
+            <option value="5">Минская область</option>
+            <option value="1">Брестская область</option>
+            <option value="2">Витебская область</option>
+            <option value="3">Гомельская область</option>
+            <option value="4">Гродненская область</option>
+            <option value="6">Могилевская область</option>
+        </select>
+    </div>
+    <div class="block">
+        <label for="selectUniversity">Университет:</label>
+        <select id="selectUniversity">
+            <option value="BGU">БГУ</option>
+            <option value="BGUIR">БГУИР</option>
+            <option value="BNTU">БНТУ</option>
+            <option value="BGEU">БГЭУ</option>
+            <option value="BGMU">БГМУ</option>
+            <option value="BGPU">БГПУ</option>
+            <option value="GrGU">ГрГУ</option>
+        </select>
+        <br>
+        <input type="radio" name="answer" value="1">Очно<br>
+        <input type="radio" name="answer" value="0">Заочно<br>
+    </div>
+    <div class="block">
+        Языки программирования:
+        <br>
+        <input type="checkbox" name="answer">C++
+        <input type="checkbox" name="answer">Java
+        <input type="checkbox" name="answer">Python<br>
+        <input type="checkbox" name="answer">Swift
+        <input type="checkbox" name="answer">JavaScript
+        <input type="checkbox" name="answer">Ruby
+    </div>
+    <div class="block">
+        Фотография:     
+        <input type="file" name="studentImage">
+    </div>
+    <button><img src="img/ok.png"><span style="font-size: 20px">Окей</span></button>
+    <button><img src="img/cancel.png"><span style="font-size: 20px">Отменить</span></button>
+ </form>
+</body>
+</html>
