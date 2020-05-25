@@ -28,9 +28,7 @@ public class Car implements Drawable {
     public int getSpeed() {
         return speed;
     }
-    public TypeCar getTypeCar() {
-        return typeCar;
-    }
+
     public int getWidth(){
         return typeCar.getWidth();
     }

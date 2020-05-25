@@ -47,7 +47,7 @@ public class Game implements ActionListener, Observable, Drawable {
 
     private State state;
 
-    public Game(TypeRoad typeRoad, Player player, int level) {
+    public Game(Player player, TypeRoad typeRoad, TypeCar typeCar, int level) {
         gameLoopTimer = new Timer(DELAY, this);
         spawnTimer = new Timer(SPAWN_DELAY, this);
         cleanCarsTimer = new Timer(CLEAN_CARS_DELAY, this);
@@ -58,7 +58,7 @@ public class Game implements ActionListener, Observable, Drawable {
 
         this.level = level;
         playerCar = new PlayerCar((road.getLeftBorder() + road.getRightBorder()) / 2,
-                road.getDownBorder() - player.getTypeCar().getHeight() - 40, -getSpeedByLevel(level), player.getTypeCar());
+                road.getDownBorder() - typeCar.getHeight() - 40, -getSpeedByLevel(level), typeCar);
 
         cars = new HashSet<>();
 
@@ -74,6 +74,7 @@ public class Game implements ActionListener, Observable, Drawable {
             moveAll();
             if(state == State.ACTIVE){
                 Car collisionCar = checkCollisions(playerCar);
+                player.setScores(player.getScores() + road.getSpeed());
                 if(collisionCar != null){
                     spawnTimer.stop();
                     collisionCar.setSpeed(0);
@@ -99,16 +100,12 @@ public class Game implements ActionListener, Observable, Drawable {
                 }
                 cars.removeIf(car -> car.getY() > road.getDownBorder() || car.getY() < road.getUpBorder() - car.getHeight());
                 if(cars.size() == countOfCollisions){
-                    int delta = 2 * playerCar.getWidth();
-                    int xPolice = (playerCar.getX() + delta < road.getRightBorder()) ?
-                            playerCar.getX() + delta : playerCar.getX() - delta;
-                    policeCar = new Car(xPolice, -TypeCar.POLICE.getHeight(), 1, TypeCar.POLICE);
-                    cars.add(policeCar);
+                    spawnPolice();
                     state = State.WAITING_FOR_POLICE;
                 }
                 updateAllObservers(new GameLoopTimerEvent(this));
             } else if(state == State.WAITING_FOR_POLICE){
-                if(policeCar.getY() > playerCar.getY()){
+                if(policeCar.getY() >= playerCar.getY()){
                     state = State.END_GAME;
                     stop();
                     updateAllObservers(new GameOverEvent(this));
@@ -148,28 +145,6 @@ public class Game implements ActionListener, Observable, Drawable {
         }
     }
 
-    private int getSpeedByLevel(int level){
-        return level;
-    }
-
-    public int getWidth(){
-        return road.getWidth();
-    }
-    public int getHeight(){
-        return road.getHeight();
-    }
-
-    public Player getPlayer() {
-        return player;
-    }
-
-    public void changeSpeed(int delta){
-        if(state == State.ACTIVE){
-            int newSpeed = road.getSpeed() + delta;
-            road.setSpeed(Math.max(newSpeed, 0));
-        }
-    }
-
     public void spawn(){
         int leftBorder = road.getLeftBorder();
         int rightBorder = road.getRightBorder();
@@ -189,6 +164,14 @@ public class Game implements ActionListener, Observable, Drawable {
         if(checkCollisions(car) == null){
             cars.add(new Car(x, -typeCar.getHeight(), speed, typeCar));
         }
+    }
+
+    private void spawnPolice(){
+        int delta = 2 * playerCar.getWidth();
+        int xPolice = (playerCar.getX() + delta < (road.getRightBorder() - TypeCar.POLICE.getWidth())) ?
+                playerCar.getX() + delta : playerCar.getX() - delta;
+        policeCar = new Car(xPolice, -TypeCar.POLICE.getHeight(), 1, TypeCar.POLICE);
+        cars.add(policeCar);
     }
 
     private boolean checkCollision(Car firstCar, Car secondCar){
@@ -229,8 +212,35 @@ public class Game implements ActionListener, Observable, Drawable {
 
     private void moveAll(){
         road.move();
-        playerCar.vMove();
         cars.forEach(car -> car.vMove(road.getSpeed() + car.getSpeed()));
+    }
+
+    private int getSpeedByLevel(int level){
+        return level;
+    }
+
+    public int getWidth(){
+        return road.getWidth();
+    }
+    public int getHeight(){
+        return road.getHeight();
+    }
+    public Player getPlayer() {
+        return player;
+    }
+
+    public void changeSpeed(int delta){
+        if(state == State.ACTIVE){
+            int newSpeed = road.getSpeed() + delta;
+            road.setSpeed(Math.max(newSpeed, 0));
+        }
+    }
+
+    @Override
+    public void draw(Graphics g) {
+        road.draw(g);
+        cars.forEach(car -> car.draw(g));
+        playerCar.draw(g);
     }
 
     @Override
@@ -246,12 +256,5 @@ public class Game implements ActionListener, Observable, Drawable {
     @Override
     public void updateAllObservers(EventObject eventObject) {
         observers.forEach(observer -> observer.update(eventObject));
-    }
-
-    @Override
-    public void draw(Graphics g) {
-        road.draw(g);
-        cars.forEach(car -> car.draw(g));
-        playerCar.draw(g);
     }
 }

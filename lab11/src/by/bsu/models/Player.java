@@ -4,18 +4,21 @@ import by.bsu.models.car.TypeCar;
 
 public class Player {
    private final String name;
-   private final TypeCar typeCar;
+   private int scores;
 
-    public Player(String name, TypeCar typeCar) {
+    public Player(String name) {
         this.name = name;
-        this.typeCar = typeCar;
+        scores = 0;
     }
 
     public String getName() {
         return name;
     }
+    public int getScores() {
+        return scores;
+    }
 
-    public TypeCar getTypeCar() {
-        return typeCar;
+    public void setScores(int scores) {
+        this.scores = scores;
     }
 }

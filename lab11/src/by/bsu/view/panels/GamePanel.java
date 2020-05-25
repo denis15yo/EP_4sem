@@ -2,6 +2,7 @@ package by.bsu.view.panels;
 
 import by.bsu.events.GameLoopTimerEvent;
 import by.bsu.events.GameOverEvent;
+import by.bsu.interfaces.Observable;
 import by.bsu.interfaces.Observer;
 import by.bsu.models.Game;
 import by.bsu.models.Player;
@@ -13,13 +14,18 @@ import java.awt.*;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.util.EventObject;
+import java.util.HashSet;
+import java.util.Set;
 
-public class GamePanel extends JPanel implements Observer {
+public class GamePanel extends JPanel implements Observer, Observable {
+    private Set<Observer> observerSet;
+
     private final Game game;
 
-    public GamePanel() {
-        Player player = new Player("Denis", TypeCar.SPORT_CAR);
-        game = new Game(TypeRoad.FIRST, player, 2);
+    public GamePanel(Player player, TypeRoad typeRoad, TypeCar typeCar, int level) {
+        observerSet = new HashSet<>();
+
+        game = new Game(player, typeRoad, typeCar, level);
 
         setPreferredSize(new Dimension(game.getWidth(), game.getHeight()));
 
@@ -63,7 +69,23 @@ public class GamePanel extends JPanel implements Observer {
             if(eventObject.getSource() instanceof Game){
                 Game game = (Game) eventObject.getSource(); // TODO: 5/25/20
             }
-            JOptionPane.showMessageDialog(null, game.getPlayer().getName() + ", ыы проиграли и прошли дистанцию: ");
+            JOptionPane.showMessageDialog(null, game.getPlayer().getName() + ", вы проиграли и прошли дистанцию: " + game.getPlayer().getScores());
+
         }
+    }
+
+    @Override
+    public void addObserver(Observer o) {
+        observerSet.add(o);
+    }
+
+    @Override
+    public void removeObserver(Observer o) {
+        observerSet.remove(o);
+    }
+
+    @Override
+    public void updateAllObservers(EventObject eventObject) {
+        observerSet.forEach(o -> o.update(eventObject));
     }
 }
