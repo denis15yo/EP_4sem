@@ -1,4 +1,4 @@
-package by.bsu.models.road;
+package by.bsu.model.road;
 
 import javax.imageio.ImageIO;
 import java.awt.*;

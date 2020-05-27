@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>by.bsu</OriginalElement>
+  <nodes>
+    <node x="1240.6963180188986" y="0.0">by.bsu.models.car.TypeCar</node>
+    <node x="1078.2148268398269" y="830.0">by.bsu.view.frames.GameFrame</node>
+    <node x="1773.8249458874457" y="202.0">by.bsu.view.panels.chooseTypeRoad.TypesRoadCellRenderer</node>
+    <node x="1517.5273268398269" y="202.0">by.bsu.view.panels.chooseTypeCar.TypesCarCellRenderer</node>
+    <node x="1868.9499458874457" y="364.0">by.bsu.view.panels.chooseTypeRoad.ChooseTypeRoadPanel</node>
+    <node x="1023.4647599264532" y="202.0">by.bsu.interfaces.Observer</node>
+    <node x="676.6696428571432" y="556.0">by.bsu.models.Game</node>
+    <node x="1147.713159824047" y="364.0">by.bsu.models.Player</node>
+    <node x="170.0" y="364.0">by.bsu.events.GameLoopTimerEvent</node>
+    <node x="1791.7624458874457" y="556.0">by.bsu.view.panels.SettingsPanel</node>
+    <node x="826.9196428571432" y="202.0">by.bsu.models.road.Road</node>
+    <node x="551.4282339524276" y="202.0">by.bsu.models.car.Car</node>
+    <node x="686.9196428571432" y="364.0">by.bsu.models.car.PlayerCar</node>
+    <node x="0.0" y="364.0">by.bsu.events.GameOverEvent</node>
+    <node x="2085.9499458874457" y="364.0">by.bsu.view.panels.ChooseLevelHardPanel</node>
+    <node x="482.9804758413634" y="0.0">by.bsu.interfaces.Drawable</node>
+    <node x="1308.5273268398269" y="202.0">by.bsu.view.panels.chooseTypeCar.TypesCarTableModel</node>
+    <node x="539.9196428571432" y="364.0">by.bsu.events.SpawnEvent</node>
+    <node x="1000.7131598240469" y="364.0">by.bsu.interfaces.Observable</node>
+    <node x="1212.782941744635" y="718.0">by.bsu.view.frames.SettingsFrame</node>
+    <node x="1439.3229850346786" y="364.0">by.bsu.view.panels.chooseTypeCar.ChooseTypeCarPanel</node>
+    <node x="2005.8249458874457" y="202.0">by.bsu.view.panels.chooseTypeRoad.TypesRoadTableModel</node>
+    <node x="1821.282627542708" y="0.0">by.bsu.models.road.TypeRoad</node>
+    <node x="2328.4929217288086" y="364.0">by.bsu.events.SettingsConfiguredEvent</node>
+    <node x="886.2759303868177" y="718.0">by.bsu.view.panels.GamePanel</node>
+    <node x="1097.7148268398269" y="932.0">by.bsu.Main</node>
+    <node x="379.0000000000001" y="364.0">by.bsu.models.State</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="by.bsu.view.panels.GamePanel" target="by.bsu.interfaces.Observable">
+      <point x="43.27272727272771" y="-26.0" />
+      <point x="989.0486576595454" y="688.0" />
+      <point x="1047.963159824047" y="688.0" />
+      <point x="-15.75" y="26.0" />
+    </edge>
+    <edge source="by.bsu.view.panels.GamePanel" target="by.bsu.interfaces.Observer">
+      <point x="10.818181818181984" y="-26.0" />
+      <point x="956.5941122049996" y="658.0" />
+      <point x="968.5767961876832" y="658.0" />
+      <point x="968.5767961876832" y="314.0" />
+      <point x="1046.589759926453" y="314.0" />
+      <point x="-32.375" y="26.0" />
+    </edge>
+    <edge source="by.bsu.view.frames.GameFrame" target="by.bsu.interfaces.Observer">
+      <point x="0.0" y="-26.0" />
+      <point x="1137.213159824047" y="344.0" />
+      <point x="1083.589759926453" y="344.0" />
+      <point x="4.625" y="26.0" />
+    </edge>
+    <edge source="by.bsu.view.frames.SettingsFrame" target="by.bsu.interfaces.Observable">
+      <point x="-68.18181818181824" y="-26.0" />
+      <point x="1219.6011235628168" y="698.0" />
+      <point x="1175.5064935064934" y="698.0" />
+      <point x="1175.5064935064934" y="506.0" />
+      <point x="1079.463159824047" y="506.0" />
+      <point x="15.75" y="26.0" />
+    </edge>
+    <edge source="by.bsu.models.car.PlayerCar" target="by.bsu.models.car.Car">
+      <point x="-39.666666666666515" y="-26.0" />
+      <point x="706.7529761904767" y="334.0" />
+      <point x="605.4282339524276" y="334.0" />
+      <point x="18.0" y="26.0" />
+    </edge>
+    <edge source="by.bsu.models.Game" target="by.bsu.interfaces.Drawable">
+      <point x="-22.85714285714289" y="-26.0" />
+      <point x="693.8125000000003" y="496.0" />
+      <point x="476.5000000000001" y="496.0" />
+      <point x="476.5000000000001" y="182.0" />
+      <point x="501.4804758413634" y="182.0" />
+      <point x="-37.0" y="26.0" />
+    </edge>
+    <edge source="by.bsu.models.road.Road" target="by.bsu.interfaces.Drawable">
+      <point x="-26.666666666666515" y="-26.0" />
+      <point x="840.2529761904767" y="82.0" />
+      <point x="575.4804758413634" y="82.0" />
+      <point x="37.0" y="26.0" />
+    </edge>
+    <edge source="by.bsu.models.car.Car" target="by.bsu.interfaces.Drawable">
+      <point x="-24.0" y="-26.0" />
+      <point x="563.4282339524276" y="182.0" />
+      <point x="538.4804758413634" y="182.0" />
+      <point x="0.0" y="26.0" />
+    </edge>
+    <edge source="by.bsu.view.panels.SettingsPanel" target="by.bsu.interfaces.Observable">
+      <point x="-69.64285714285711" y="-26.0" />
+      <point x="1797.1195887445888" y="496.0" />
+      <point x="1110.963159824047" y="496.0" />
+      <point x="47.25" y="26.0" />
+    </edge>
+    <edge source="by.bsu.models.Game" target="by.bsu.interfaces.Observable">
+      <point x="30.476190476190368" y="-26.0" />
+      <point x="747.1458333333336" y="506.0" />
+      <point x="1016.4631598240469" y="506.0" />
+      <point x="-47.25" y="26.0" />
+    </edge>
+    <edge source="by.bsu.view.frames.SettingsFrame" target="by.bsu.interfaces.Observer">
+      <point x="-13.63636363636374" y="-26.0" />
+      <point x="1274.1465781082713" y="658.0" />
+      <point x="1253.213159824047" y="658.0" />
+      <point x="1253.213159824047" y="334.0" />
+      <point x="1092.839759926453" y="334.0" />
+      <point x="13.875" y="26.0" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="0.42258440046565776" x="1278.5" y="492.0" />
+  <SelectedNodes />
+  <Categories />
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+

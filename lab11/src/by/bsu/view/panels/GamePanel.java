@@ -4,10 +4,10 @@ import by.bsu.events.GameLoopTimerEvent;
 import by.bsu.events.GameOverEvent;
 import by.bsu.interfaces.Observable;
 import by.bsu.interfaces.Observer;
-import by.bsu.models.Game;
-import by.bsu.models.Player;
-import by.bsu.models.car.TypeCar;
-import by.bsu.models.road.TypeRoad;
+import by.bsu.model.Game;
+import by.bsu.model.Player;
+import by.bsu.model.car.TypeCar;
+import by.bsu.model.road.TypeRoad;
 
 import javax.swing.*;
 import java.awt.*;
@@ -18,9 +18,12 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class GamePanel extends JPanel implements Observer, Observable {
-    private Set<Observer> observerSet;
+    private final Set<Observer> observerSet;
 
     private final Game game;
+
+    private static final int HORIZONTAL_MOVE_DELTA = 10;
+    private static final int ACCELERATION = 1;
 
     public GamePanel(Player player, TypeRoad typeRoad, TypeCar typeCar, int level) {
         observerSet = new HashSet<>();
@@ -36,16 +39,16 @@ public class GamePanel extends JPanel implements Observer, Observable {
             @Override
             public void keyPressed(KeyEvent e) {
                 if(e.getExtendedKeyCode() == KeyEvent.VK_LEFT){
-                    game.hMovePlayer(-10);
+                    game.hMovePlayer(-HORIZONTAL_MOVE_DELTA);
                 }
                 else if(e.getExtendedKeyCode() == KeyEvent.VK_RIGHT){
-                    game.hMovePlayer(10);
+                    game.hMovePlayer(HORIZONTAL_MOVE_DELTA);
                 }
                 else if(e.getExtendedKeyCode() == KeyEvent.VK_UP){
-                    game.changeSpeed(1);
+                    game.changeSpeed(ACCELERATION);
                 }
                 else if(e.getExtendedKeyCode() == KeyEvent.VK_DOWN){
-                    game.changeSpeed(-1);
+                    game.changeSpeed(-ACCELERATION);
                 }
             }
         });
@@ -66,11 +69,8 @@ public class GamePanel extends JPanel implements Observer, Observable {
         if(eventObject instanceof GameLoopTimerEvent){
             repaint();
         } else if(eventObject instanceof GameOverEvent){
-            if(eventObject.getSource() instanceof Game){
-                Game game = (Game) eventObject.getSource(); // TODO: 5/25/20
-            }
             JOptionPane.showMessageDialog(null, game.getPlayer().getName() + ", вы проиграли и прошли дистанцию: " + game.getPlayer().getScores());
-
+            updateAllObservers(eventObject);
         }
     }
 

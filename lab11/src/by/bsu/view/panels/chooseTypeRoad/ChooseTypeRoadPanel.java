@@ -1,12 +1,12 @@
 package by.bsu.view.panels.chooseTypeRoad;
 
-import by.bsu.models.road.TypeRoad;
+import by.bsu.model.road.TypeRoad;
 
 import javax.swing.*;
 import java.awt.*;
 
 public class ChooseTypeRoadPanel extends JPanel {
-    private JTable table;
+    private final JTable table;
 
     public ChooseTypeRoadPanel() {
         super(new BorderLayout());

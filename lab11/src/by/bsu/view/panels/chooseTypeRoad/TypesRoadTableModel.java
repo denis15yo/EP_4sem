@@ -1,14 +1,15 @@
 package by.bsu.view.panels.chooseTypeRoad;
 
-import by.bsu.models.road.TypeRoad;
+import by.bsu.model.road.TypeRoad;
 
 import javax.swing.table.AbstractTableModel;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
+@SuppressWarnings("FieldMayBeFinal")
 public class TypesRoadTableModel extends AbstractTableModel {
-    private List<TypeRoad> roadList;
+    private final List<TypeRoad> roadList;
     private int rowCount;
     private int columnCount;
 

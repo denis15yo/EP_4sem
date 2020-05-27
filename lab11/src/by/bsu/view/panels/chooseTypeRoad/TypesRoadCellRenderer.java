@@ -1,6 +1,6 @@
 package by.bsu.view.panels.chooseTypeRoad;
 
-import by.bsu.models.road.TypeRoad;
+import by.bsu.model.road.TypeRoad;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableCellRenderer;
@@ -14,7 +14,7 @@ public class TypesRoadCellRenderer extends DefaultTableCellRenderer {
     @Override
     public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
         TypeRoad typeRoad = (TypeRoad) value;
-        setIcon(new ImageIcon(typeRoad.getBg().getScaledInstance(100, 100, Image.SCALE_SMOOTH)));
+        setIcon(new ImageIcon(typeRoad.getBg().getScaledInstance(250, 300, Image.SCALE_SMOOTH)));
         if(isSelected){
             setBackground(Color.LIGHT_GRAY);
         }

@@ -1,4 +1,4 @@
-package by.bsu.models.car;
+package by.bsu.model.car;
 
 public class PlayerCar extends Car {
     public PlayerCar(int x, int y, int speed, TypeCar typeCar) {

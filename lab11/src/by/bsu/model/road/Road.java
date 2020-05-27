@@ -1,4 +1,4 @@
-package by.bsu.models.road;
+package by.bsu.model.road;
 
 import by.bsu.interfaces.Drawable;
 

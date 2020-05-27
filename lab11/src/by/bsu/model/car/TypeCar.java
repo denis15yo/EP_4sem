@@ -1,4 +1,4 @@
-package by.bsu.models.car;
+package by.bsu.model.car;
 
 import javax.imageio.ImageIO;
 import java.awt.*;

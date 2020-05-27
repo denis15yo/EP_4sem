@@ -1,7 +1,6 @@
 package by.bsu.view.panels.chooseTypeCar;
 
-import by.bsu.models.car.TypeCar;
-import by.bsu.models.road.TypeRoad;
+import by.bsu.model.car.TypeCar;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableCellRenderer;

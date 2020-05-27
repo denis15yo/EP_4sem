@@ -1,4 +1,4 @@
-package by.bsu.models;
+package by.bsu.model;
 
 import by.bsu.events.GameOverEvent;
 import by.bsu.events.SpawnEvent;
@@ -6,11 +6,11 @@ import by.bsu.events.GameLoopTimerEvent;
 import by.bsu.interfaces.Drawable;
 import by.bsu.interfaces.Observable;
 import by.bsu.interfaces.Observer;
-import by.bsu.models.car.Car;
-import by.bsu.models.car.PlayerCar;
-import by.bsu.models.car.TypeCar;
-import by.bsu.models.road.Road;
-import by.bsu.models.road.TypeRoad;
+import by.bsu.model.car.Car;
+import by.bsu.model.car.PlayerCar;
+import by.bsu.model.car.TypeCar;
+import by.bsu.model.road.Road;
+import by.bsu.model.road.TypeRoad;
 
 import javax.swing.*;
 import java.awt.*;
@@ -30,7 +30,6 @@ public class Game implements ActionListener, Observable, Drawable {
     private final Timer cleanCarsTimer;
 
     private static final int DELAY = 16;
-    private static final int SPAWN_DELAY = 1000;
     private static final int CLEAN_CARS_DELAY = 5000;
 
     private final int level;
@@ -41,24 +40,29 @@ public class Game implements ActionListener, Observable, Drawable {
     private final PlayerCar playerCar;
     private final Set<Car> cars;
 
+    private static final int ROAD_SPEED = 2;
+
     private static final int COLLISION_OFFSET = 10;
 
+    private static final int PROBABILITY_COEFFICIENT_ONCOMING_TRAFFIC = 3;
+
     private Car policeCar;
+    private static final int POLICE_CAR_SPEED = 3;
 
     private State state;
 
     public Game(Player player, TypeRoad typeRoad, TypeCar typeCar, int level) {
         gameLoopTimer = new Timer(DELAY, this);
-        spawnTimer = new Timer(SPAWN_DELAY, this);
+        spawnTimer = new Timer(getSpawnDelayByLevel(level), this);
         cleanCarsTimer = new Timer(CLEAN_CARS_DELAY, this);
 
         this.player = player;
 
-        road = new Road(typeRoad, getSpeedByLevel(level));
+        road = new Road(typeRoad, ROAD_SPEED);
 
         this.level = level;
         playerCar = new PlayerCar((road.getLeftBorder() + road.getRightBorder()) / 2,
-                road.getDownBorder() - typeCar.getHeight() - 40, -getSpeedByLevel(level), typeCar);
+                road.getDownBorder() - typeCar.getHeight() - 40, -ROAD_SPEED, typeCar);
 
         cars = new HashSet<>();
 
@@ -152,13 +156,13 @@ public class Game implements ActionListener, Observable, Drawable {
         TypeCar typeCar = TypeCar.values()[random.nextInt(TypeCar.values().length)];
         int x;
         int speed;
-        if(random.nextInt() % 3 != 0){
+        if(random.nextInt() % PROBABILITY_COEFFICIENT_ONCOMING_TRAFFIC != 0){
             x = random.nextInt((rightBorder - leftBorder) / 2 - typeCar.getWidth()) + leftBorder;
             speed = getSpeedByLevel(level);
         }
         else{
             x = random.nextInt((rightBorder - leftBorder) / 2 - typeCar.getWidth()) + (rightBorder + leftBorder) / 2;
-            speed = -getSpeedByLevel(level) + 1;
+            speed = -ROAD_SPEED + 1;
         }
         Car car = new Car(x, -typeCar.getHeight(), speed, typeCar);
         if(checkCollisions(car) == null){
@@ -170,7 +174,7 @@ public class Game implements ActionListener, Observable, Drawable {
         int delta = 2 * playerCar.getWidth();
         int xPolice = (playerCar.getX() + delta < (road.getRightBorder() - TypeCar.POLICE.getWidth())) ?
                 playerCar.getX() + delta : playerCar.getX() - delta;
-        policeCar = new Car(xPolice, -TypeCar.POLICE.getHeight(), 1, TypeCar.POLICE);
+        policeCar = new Car(xPolice, -TypeCar.POLICE.getHeight(), POLICE_CAR_SPEED, TypeCar.POLICE);
         cars.add(policeCar);
     }
 
@@ -216,7 +220,15 @@ public class Game implements ActionListener, Observable, Drawable {
     }
 
     private int getSpeedByLevel(int level){
-        return level;
+        return ROAD_SPEED + level;
+    }
+    private int getSpawnDelayByLevel(int level){
+        switch (level){
+            case 1: return 1500;
+            case 2: return 1000;
+            case 3: return 500;
+        }
+        return 1000;
     }
 
     public int getWidth(){

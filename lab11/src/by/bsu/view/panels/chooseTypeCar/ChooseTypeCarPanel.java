@@ -1,13 +1,12 @@
 package by.bsu.view.panels.chooseTypeCar;
 
-import by.bsu.models.car.TypeCar;
-import by.bsu.view.panels.chooseTypeRoad.TypesRoadCellRenderer;
+import by.bsu.model.car.TypeCar;
 
 import javax.swing.*;
 import java.awt.*;
 
 public class ChooseTypeCarPanel extends JPanel {
-    private JTable table;
+    private final JTable table;
 
     public ChooseTypeCarPanel() {
         super(new BorderLayout());

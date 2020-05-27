@@ -1,6 +1,4 @@
-package by.bsu.models;
-
-import by.bsu.models.car.TypeCar;
+package by.bsu.model;
 
 public class Player {
    private final String name;

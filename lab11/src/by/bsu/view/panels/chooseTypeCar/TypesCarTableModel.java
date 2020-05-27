@@ -1,15 +1,15 @@
 package by.bsu.view.panels.chooseTypeCar;
 
-import by.bsu.models.car.TypeCar;
-import by.bsu.models.road.TypeRoad;
+import by.bsu.model.car.TypeCar;
 
 import javax.swing.table.AbstractTableModel;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
+@SuppressWarnings("FieldMayBeFinal")
 public class TypesCarTableModel extends AbstractTableModel {
-    private List<TypeCar> carList;
+    private final List<TypeCar> carList;
     private int rowCount;
     private int columnCount;
 

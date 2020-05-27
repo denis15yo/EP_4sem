@@ -2,31 +2,32 @@ package by.bsu.view.frames;
 
 import by.bsu.interfaces.Observable;
 import by.bsu.interfaces.Observer;
-import by.bsu.models.Player;
-import by.bsu.models.car.TypeCar;
-import by.bsu.models.road.TypeRoad;
+import by.bsu.model.Player;
+import by.bsu.model.car.TypeCar;
+import by.bsu.model.road.TypeRoad;
 import by.bsu.view.panels.SettingsPanel;
 
 import javax.swing.*;
-import java.awt.*;
 import java.util.EventObject;
 import java.util.HashSet;
 import java.util.Set;
 
 public class SettingsFrame extends JFrame implements Observer, Observable {
-    private Set<Observer> observerSet;
+    private final Set<Observer> observerSet;
 
-    private Player player;
-    private SettingsPanel settingsPanel;
+    private final Player player;
+    private final SettingsPanel settingsPanel;
+
+    private static final int levelsCount = 3;
 
     public SettingsFrame() {
         super("Настройки");
 
         observerSet = new HashSet<>();
 
-        settingsPanel = new SettingsPanel();
+        settingsPanel = new SettingsPanel(levelsCount);
 
-        player = new Player(JOptionPane.showInputDialog(null, "Как вас зовут?"));
+        player = new Player(JOptionPane.showInputDialog(null, "Как вас зовут?", "Player"));
 
         settingsPanel.addObserver(this);
         add(settingsPanel);
@@ -45,6 +46,7 @@ public class SettingsFrame extends JFrame implements Observer, Observable {
     public TypeCar getTypeCar(){
         return settingsPanel.getTypeCar();
     }
+    public int getLevel() { return  settingsPanel.getLevel();}
 
     @Override
     public void addObserver(Observer o) {

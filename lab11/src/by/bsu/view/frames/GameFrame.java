@@ -10,7 +10,7 @@ import java.util.EventObject;
 
 @SuppressWarnings("FieldCanBeLocal")
 public class GameFrame extends JFrame implements Observer {
-    private SettingsFrame settingsFrame;
+    private final SettingsFrame settingsFrame;
     private GamePanel gamePanel;
 
 
@@ -26,9 +26,11 @@ public class GameFrame extends JFrame implements Observer {
     public void update(EventObject eventObject) {
         if(eventObject instanceof SettingsConfiguredEvent){
             settingsFrame.setVisible(false);
-            gamePanel = new GamePanel(settingsFrame.getPlayer(), settingsFrame.getTypeRoad(), settingsFrame.getTypeCar(), 2);
+
+            gamePanel = new GamePanel(settingsFrame.getPlayer(), settingsFrame.getTypeRoad(), settingsFrame.getTypeCar(), settingsFrame.getLevel());
             gamePanel.addObserver(this);
             add(gamePanel);
+
             pack();
             setDefaultCloseOperation(EXIT_ON_CLOSE);
             setLocationRelativeTo(null);
@@ -36,7 +38,7 @@ public class GameFrame extends JFrame implements Observer {
             setVisible(true);
         } else if(eventObject instanceof GameOverEvent){
             setVisible(false);
+            dispose();
         }
-
     }
 }
