@@ -1,0 +1,65 @@
+<ticketsList>
+    <ticket id="1">
+        <flight>
+            <city attr="from">
+                <name>Минск</name>
+                <country>Беларусь</country>
+            </city>
+            <city attr="to">
+                <name>Москва</name>
+                <country>Россия</country>
+            </city>
+            <date attr="departure">Среда, 4 Июля 2001 12:08:56</date>
+            <date attr="arrival">Суббота, 30 Мая 2020 12:08:56</date>
+        </flight>
+        <person passportID="MC2849081">
+            <name>Денис</name>
+            <surname>Шилович</surname>
+            <age>20</age>
+        </person>
+        <placeNumber>23</placeNumber>
+        <cost>300</cost>
+    </ticket>
+    <ticket id="2">
+        <flight>
+            <city attr="from">
+                <name>Минск</name>
+                <country>Беларусь</country>
+            </city>
+            <city attr="to">
+                <name>Москва</name>
+                <country>Россия</country>
+            </city>
+            <date attr="departure">Среда, 4 Июля 2001 12:08:56</date>
+            <date attr="arrival">Суббота, 30 Мая 2020 12:08:56</date>
+        </flight>
+        <person passportID="MC2849081">
+            <name>Ольга</name>
+            <surname>Шилович</surname>
+            <age>42</age>
+        </person>
+        <placeNumber>22</placeNumber>
+        <cost>350</cost>
+    </ticket>
+    <ticket id="3">
+        <flight>
+            <city attr="from">
+                <name>Минск</name>
+                <country>Беларусь</country>
+            </city>
+            <city attr="to">
+                <name>Иркутск</name>
+                <country>Россия</country>
+            </city>
+            <date attr="departure">Среда, 4 Июля 2001 12:08:56</date>
+            <date attr="arrival">Пятница, 29 Мая 2020 12:08:56</date>
+        </flight>
+        <person passportID="MC2849080">
+            <name>Никита</name>
+            <surname>Малевич</surname>
+            <age>19</age>
+        </person>
+        <placeNumber>15</placeNumber>
+        <cost>100</cost>
+    </ticket>
+</ticketsList>
